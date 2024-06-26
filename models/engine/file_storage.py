@@ -7,6 +7,23 @@ class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
     __objects = {}
+    def all(self, cls=None):
+    """
+        Provide a dictionary of all instantiated objects in _instances.
+
+        If a specific class (cls) is given, return a dictionary of objects of that class.
+        Otherwise, return the entire _instances dictionary.
+    """
+        if cls is not None:
+            if isinstance(cls, str):
+                cls = eval(cls)
+            filtered_objects = {}
+            for key, value in self._instances.items():
+                if isinstance(value, cls):
+                    filtered_objects[key] = value
+            return filtered_objects
+        return self._instances
+
 
     def all(self):
         """Returns a dictionary of models currently in storage"""
@@ -48,3 +65,16 @@ class FileStorage:
                         self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+
+    def delete(self, obj=None):
+        """Remove the specified object from __objects, if it is present."""
+        try:
+           del self.__objects["{}.{}".format(type(obj).__name__, obj.id)]
+        except (AttributeError, KeyError):
+           pass
+
+    def close(self):
+        """Invoke the reload method."""
+        self.reload()
+
