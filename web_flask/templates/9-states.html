@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!-- Defines the document type as HTML5 -->
+<HTML lang="en">
+    <!-- Opens the HTML document and sets the language to English -->
+    <HEAD>
+        <!-- Opens the head section of the document -->
+        <TITLE>HBNB</TITLE>
+        <!-- Sets the title of the document to 'HBNB' -->
+    </HEAD>
+    <BODY>
+        <!-- Opens the body section of the document -->
+        {% if state %}
+        <!-- Checks if the 'state' variable is defined -->
+        <H1>State: {{ state.name }}</H1>
+        <!-- Displays the state name inside an H1 heading -->
+        <H3>Cities:</H3>
+        <!-- Displays a subheading 'Cities:' -->
+        <UL>
+            <!-- Starts an unordered list -->
+            {% for city in state.cities|sort(attribute="name") %}
+            <!-- Loops through each city in the state's cities, sorted by name -->
+            <LI>{{ city.id }}: <B>{{ city.name }}</B></LI>
+            <!-- Displays each city's ID and name in a list item, with the name in bold -->
+            {% endfor %}
+            <!-- Ends the loop for cities -->
+        </UL>
+        <!-- Closes the unordered list -->
+        {% else %}
+        <!-- If the 'state' variable is not defined -->
+        <H1>Not found!</H1>
+        <!-- Displays 'Not found!' inside an H1 heading -->
+        {% endif %}
+        <!-- Ends the if-else condition -->
+    </BODY>
+    <!-- Closes the body section of the document -->
+</HTML>
+<!-- Closes the HTML document -->
