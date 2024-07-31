@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+
 """
 Script to start a Flask web application with two routes.
 """
 
 from flask import Flask
+
 
 app = Flask(__name__)
 
@@ -23,7 +25,7 @@ def hbnd_route():
     """
     Handles requests to the '/hbnb' URL and returns another message.
     Returns:
-        str: The message 'HBNB'.
+        str: The message 'HBNB'
     """
     return 'HBNB'
 
