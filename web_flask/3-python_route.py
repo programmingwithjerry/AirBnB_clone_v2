@@ -16,6 +16,7 @@ app.url_map.strict_slashes = False
 def hello_hbnb():
     """
     Returns a greeting message.
+
     Returns:
         str: The message 'Hello HBNB!'.
     """
@@ -26,7 +27,8 @@ def hello_hbnb():
 def hbnb():
     """
     Returns a different greeting message.
-    Returns:
+
+  Returns:
         str: The message 'HBNB'.
     """
     return 'HBNB'
@@ -39,6 +41,7 @@ def c_text(text):
     with underscores replaced by spaces.    
     Args:
         text (str): The text to display after 'C '.
+
     Returns:
         str: The formatted message 'C <text>'.
     """
@@ -55,6 +58,7 @@ def python_is_cool(text='is cool'):
     Args:
         text (str): The text to display after 'Python '.
         Defaults to 'is cool'.
+
     Returns:
         str: The formatted message 'Python <text>'.
     """
