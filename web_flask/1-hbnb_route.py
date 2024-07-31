@@ -32,7 +32,7 @@ def hbnd_route():
 
 if __name__ == '__main__':
     """
-    Main entry point of the application. 
+    Main entry point of the application.
     Runs the Flask app on all available IP addresses at port 5000.
     """
     app.run(host='0.0.0.0', port=5000)
