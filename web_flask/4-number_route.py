@@ -16,7 +16,7 @@ app.url_map.strict_slashes = False
 def hello_hbnb():
     """
     Returns a greeting message.
-    
+
     Returns:
         str: The message 'Hello HBNB!'.
     """
@@ -27,7 +27,7 @@ def hello_hbnb():
 def hbnb():
     """
     Returns a different greeting message.
-    
+
     Returns:
         str: The message 'HBNB'.
     """
@@ -39,10 +39,10 @@ def c_is_fun(text):
     """
     Returns 'C ' followed by the value of the text variable,
     with underscores replaced by spaces.
-    
+
     Args:
         text (str): The text to display after 'C '.
-    
+
     Returns:
         str: The formatted message 'C <text>'.
     """
@@ -56,11 +56,11 @@ def python_is_fun(text='is cool'):
     """
     Returns 'Python ' followed by the value of the text variable,
     with a default value if not provided.
-    
+
     Args:
         text (str): The text to display after 'Python '.
         Defaults to 'is cool'.
-    
+
     Returns:
         str: The formatted message 'Python <text>'.
     """
@@ -72,10 +72,10 @@ def python_is_fun(text='is cool'):
 def number_text(n):
     """
     Returns a message only if the provided variable is an integer.
-    
+
     Args:
         n (int): The integer to display in the message.
-    
+
     Returns:
         str: The message '<n> is a number'.
     """
