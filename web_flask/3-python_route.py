@@ -4,6 +4,7 @@ Script to start a Flask web application with multiple routes,
 including one with a default variable value.
 """
 
+
 from flask import Flask
 
 
@@ -51,7 +52,6 @@ def python_is_cool(text='is cool'):
     """
     Returns 'Python ' followed by the value of the text variable,
     with a default value if not provided.
-
     Args:
         text (str): The text to display after 'Python '.
         Defaults to 'is cool'.
