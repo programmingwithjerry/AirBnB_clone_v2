@@ -39,10 +39,10 @@ def c_is_fun_text(text):
     """
     Returns 'C ' followed by the value of the text variable,
     with underscores replaced by spaces.
-    
+
     Args:
         text (str): The text to display after 'C '.
-    
+
     Returns:
         str: The formatted message 'C <text>'.
     """
