@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character set for the document -->
+    <meta charset="utf-8">
+
+    <!-- Viewport settings for responsive design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title of the webpage -->
+    <title>Holberton AirBnB clone</title>
+
+    <!-- Link to CSS stylesheets -->
+    <link rel="stylesheet" href="../static/styles/reset.css"> <!-- Reset CSS for consistent styling -->
+    <link rel="stylesheet" href="../static/styles/100-common.css"> <!-- Common styles for the page -->
+    <link rel="stylesheet" href="../static/styles/100-header.css"> <!-- Styles for the header -->
+    <link rel="stylesheet" href="../static/styles/100-footer.css"> <!-- Styles for the footer -->
+    <link rel="stylesheet" href="../static/styles/100-filters.css"> <!-- Styles for the filters section -->
+    <link rel="stylesheet" href="../static/styles/100-places.css"> <!-- Styles for the places section -->
+
+    <!-- Link to Font Awesome for icons -->
+    <link rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+
+    <!-- Favicon for the website -->
+    <link rel="icon" href="../static/images/icon.png">
+  </head>
+
+  <body>
+    <!-- Header section of the page -->
+    <header>
+      <!-- Content for the header can be added here -->
+    </header>
+
+    <!-- Main content of the page -->
+    <main>
+      <!-- Container for the main content -->
+      <div class="container">
+        <!-- Filters section for searching and filtering -->
+        <section class="filters" role="search">
+          <!-- Locations filter -->
+          <div class="locations">
+            <h3>States</h3>
+            <h4>&nbsp;</h4>
+            <div class="popover">
+              <ul>
+                {% for state in models.states|sort(attribute='name') %}
+                  <li><strong>{{ state.name }}</strong>
+                    <ul>
+                      {% for city in state.cities|sort(attribute='name') %}
+                        <li>{{ city.name }}</li>
+                      {% endfor %}
+                    </ul>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+
+          <!-- Amenities filter -->
+          <div class="amenities">
+            <h3>Amenities</h3>
+            <h4>&nbsp;</h4>
+            <ul class="popover">
+              {% for amenity in models.amenities|sort(attribute='name') %}
+                <li>{{ amenity.name }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <!-- Search button -->
+          <button>Search</button>
+        </section>
+
+        <!-- Places section displaying all available places -->
+        <section class="places">
+          <h1>Places</h1>
+          {% for place in models.places|sort(attribute='name') %}
+          <article>
+            <!-- Title and price of the place -->
+            <div class="title_box">
+              <h2>{{ place.name }}</h2>
+              <div class="price_by_night">&#36;{{ place.price_by_night }}</div>
+            </div>
+
+            <!-- Information about the place -->
+            <div class="information">
+              <div class="max_guest">
+                <i class="fa fa-users fa-3x" aria-hidden="true"></i>
+                <br>{{ place.max_guest }} Guests
+              </div>
+              <div class="number_rooms">
+                <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
+                <br>{{ place.number_rooms }} Rooms
+              </div>
+              <div class="number_bathrooms">
+                <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
+                <br>{{ place.number_bathrooms }} Bathrooms
+              </div>
+            </div>
+
+            <!-- Owner details -->
+            <div class="user">
+              <strong>Owner:</strong> {{ place.user.first_name }} {{ place.user.last_name }}
+            </div>
+
+            <!-- Description of the place -->
+            <div class="description">{{ place.description|safe }}</div>
+
+            <!-- Amenities available in the place -->
+            <div class="amenities">
+              <h2>Amenities</h2>
+              {% for amenity in models.amenities|sort(attribute='name') %}
+              <ul>
+                <li><p>{{ amenity.name }}</p></li>
+              </ul>
+              {% endfor %}
+            </div>
+
+            <!-- Reviews for the place -->
+            <div class="reviews">
+              <h2>{{ place.reviews.__len__() }} Reviews</h2>
+              {% for review in place.reviews %}
+              <h3>From {{ review.user.first_name }} on {{ review.created_at.date().__str__() }}</h3>
+              <ul>
+                <li><p>{{ review.text|safe }}</p></li>
+              </ul>
+              {% endfor %}
+            </div>
+          </article>
+          {% endfor %}
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer section of the page -->
+    <footer>
+      Best School
+    </footer>
+  </body>
+</html>
